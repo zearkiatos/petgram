@@ -1,6 +1,16 @@
 version: "3.7"
 
 services:
+  api:
+    build:
+      context: ./api/.
+      dockerfile: Dockerfile
+    container_name: petgram-api
+    volumes: 
+      - "./api/.:/app"
+    ports:
+      - "3550:3500"
+    tty: true
   app:
     build:
       context: .

@@ -7,13 +7,14 @@
     "deploy": "now -t <tu-token>",
     "start:api": "NODE_ENV=production node index.js",
     "dev:api": "nodemon index.js --ignore db.json",
+    "docker:dev": "nodemon index.js --ignore db.json --host 0.0.0.0",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "apollo-server-express": "2.5.0",
-    "bcrypt": "3.0.6",
+    "bcrypt": "^5.0.0",
     "cors": "2.8.5",
     "express": "4.17.0",
     "express-jwt": "5.3.1",
