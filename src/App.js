@@ -1,4 +1,9 @@
 import React from 'react'
-import { Category } from './components/Category'
-
-export const App = () => <Category />
+import { CategoriesList } from './components/CategoriesList'
+import { GlobalStyles } from './shared/styles/GlobalStyles'
+export const App = () => (
+  <div>
+    <GlobalStyles />
+    <CategoriesList />
+  </div>
+)
