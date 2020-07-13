@@ -1,18 +1,27 @@
-import React, { useState, useEffect, Fragment } from 'react'
+import React, { useState, useEffect } from 'react'
+import Skeleton from 'react-loading-skeleton'
 import { Category } from '../Category'
 import { List, Item } from './styles'
 
-export const CategoriesList = () => {
+const useCategoriesData = () => {
   const [categories, setCategories] = useState([])
-  const [showFixed, setShowFixed] = useState(false)
+  const [loading, setLoading] = useState(false)
   useEffect(() => {
-    window.fetch('https://petgram-server.zearkiatos.vercel.app/categories')
+    setLoading(true)
+    window.fetch('https://petgram-server.zearkiatos.vercel.app/ctegories')
       .then(res => res.json())
       .then(response => {
         setCategories(response)
+        setLoading(false)
       })
   }, [])
 
+  return { categories, loading }
+}
+
+export const CategoriesList = () => {
+  const [showFixed, setShowFixed] = useState(false)
+  const { categories, loading } = useCategoriesData()
   useEffect(() => {
     const onScroll = e => {
       const newShowFixed = window.scrollY > 200
@@ -22,9 +31,27 @@ export const CategoriesList = () => {
     return () => document.removeEventListener('scroll', onScroll)
   })
 
+  const renderLoadingList = (quantity = 5) => {
+    const items = []
+    for (let i = 0; i < quantity; i++) {
+      const item = (<Item key={`skeleton-${i}`}>
+        <Skeleton circle width={75} height={75} />
+                    </Item>)
+      items.push(item)
+    }
+
+    return (<List>
+      {
+        items.map(item => {
+          return item
+        })
+      }
+            </List>)
+  }
+
   const renderList = (fixed) => {
     return (
-      <List className={fixed ? 'fixed' : ''}>
+      <List fixed={fixed}>
         {
           categories.map(category => <Item key={category.id}><Category {...category} /></Item>)
         }
@@ -32,10 +59,11 @@ export const CategoriesList = () => {
       </List>
     )
   }
+  if (loading) { return renderLoadingList() }
   return (
-    <Fragment>
+    <>
       {renderList()}
       {showFixed && renderList(true)}
-    </Fragment>
+    </>
   )
 }
