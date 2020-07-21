@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { PhotoCard } from '../components/PhotoCard'
 import { gql } from 'apollo-boost'
 import { Query } from 'react-apollo'
@@ -24,10 +24,12 @@ const renderPhotoCard = ({ loading, error, data = { photo: {} } }) => {
 }
 
 const renderLoading = () => {
-  return <>
-    <Skeleton height={75} />
-    <Skeleton height={32} width={50} />
-         </>
+  return (
+    <>
+      <Skeleton height={75} />
+      <Skeleton height={32} width={50} />
+    </>
+  )
 }
 const renderError = () => <p>⛔ Error  </p>
 export const PhotoCardWithQuery = ({ id }) => (
