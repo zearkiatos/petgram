@@ -34,19 +34,22 @@ export const CategoriesList = () => {
   const renderLoadingList = (quantity = 5) => {
     const items = []
     for (let i = 0; i < quantity; i++) {
-      const item = (<Item key={`skeleton-${i}`}>
-        <Skeleton circle width={75} height={75} />
-                    </Item>)
+      const item = (
+        <Item key={`skeleton-${i}`}>
+          <Skeleton circle width={75} height={75} />
+        </Item>)
       items.push(item)
     }
 
-    return (<List>
-      {
-        items.map(item => {
-          return item
-        })
-      }
-            </List>)
+    return (
+      <List>
+        {
+          items.map(item => {
+            return item
+          })
+        }
+      </List>
+    )
   }
 
   const renderList = (fixed) => {
