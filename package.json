@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "dev": "webpack-dev-server --history-api-fallback",
-    "docker:dev": "webpack-dev-server --host 0.0.0.0 --history-api-fallback", 
+    "docker:dev": "webpack-dev-server --host 0.0.0.0 --history-api-fallback --watch",
     "lint": "standard"
   },
   "repository": {
@@ -29,6 +29,7 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "dotenv-webpack": "^2.0.0",
+    "nodemon-webpack-plugin": "^4.3.2",
     "standard": "^14.3.4",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12",

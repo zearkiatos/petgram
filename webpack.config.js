@@ -1,5 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
+const NodemonPlugin = require('nodemon-webpack-plugin')
+
 module.exports = {
   output: {
     filename: 'app.bundle.js',
@@ -11,7 +13,8 @@ module.exports = {
     }),
     new Dotenv({
       path: './.env'
-    })
+    }),
+    new NodemonPlugin()
   ],
   module: {
     rules: [
