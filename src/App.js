@@ -25,19 +25,19 @@ export const App = () => {
         <Detail path='/detail/:detailId' />
       </Router>
       <UserLogged>
-          {
-            ({ isAuth }) =>
-              isAuth
-                ? <Router>
-                  <Favorite path='/favorite' />
-                  <User path='/user' />
-                  </Router>
-                : <Router>
-                  <NotRegisterUser path='/favorite' />
-                  <NotRegisterUser path='/user' />
-                  </Router>
-          }
-        </UserLogged>
+        {
+          ({ isAuth }) =>
+            isAuth
+              ? <Router>
+                <Favorite path='/favorite' />
+                <User path='/user' />
+                </Router>
+              : <Router>
+                <NotRegisterUser path='/favorite' />
+                <NotRegisterUser path='/user' />
+                </Router>
+        }
+      </UserLogged>
       <NavBar />
     </div>
   )
