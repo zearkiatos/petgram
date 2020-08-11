@@ -8,7 +8,8 @@ WORKDIR /app
 COPY . .
 
 RUN npm install && \
-    npm install -g webpack
+    npm install webpack --save-dev && \
+    npm install webpack-cli --save-dev
 
 EXPOSE 8080
 

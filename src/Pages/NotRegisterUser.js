@@ -7,7 +7,10 @@ export const NotRegisterUser = () => (
     {
       ({ activateAuth }) => {
         return (
-          <UserForm onSubmit={activateAuth} />
+          <>
+            <UserForm onSubmit={activateAuth} title='Register' />
+            <UserForm onSubmit={activateAuth} title='Log In' />
+          </>
         )
       }
     }
