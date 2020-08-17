@@ -7,7 +7,23 @@ import Context from './Context'
 const { BASE_API_URL } = process.env
 
 const client = new ApolloClient({
-  uri: `${BASE_API_URL}/graphql`
+  uri: `${BASE_API_URL}/graphql`,
+  request: operation => {
+    const token = window.sessionStorage.getItem('token')
+    const authorization = token ? `Bearer ${token}` : ''
+    operation.setContext({
+      headers: {
+        authorization
+      }
+    })
+  },
+  onError: error => {
+    const { networkError } = error
+    if (networkError && networkError.result.code === 'invalid_token') {
+      window.sessionStorage.removeItem('token')
+      window.location.href = '/'
+    }
+  }
 })
 
 ReactDOM.render(
