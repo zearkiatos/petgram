@@ -18,20 +18,25 @@ export const App = () => {
       <Router>
         <Home path='/' />
         <Home path='/pet/:categoryId' />
-        <Detail path='/detail/:detailId' />
       </Router>
       <Context.Consumer>
         {
           ({ isAuth }) =>
             isAuth
-              ? <Router>
-                <Favorite path='/favorite' />
-                <User path='/user' />
+              ? (
+                <Router>
+                  <Detail path='/detail/:detailId' />
+                  <Favorite path='/favorite' />
+                  <User path='/user' />
                 </Router>
-              : <Router>
-                <NotRegisterUser path='/favorite' />
-                <NotRegisterUser path='/user' />
+              )
+              : (
+                <Router>
+                  <NotRegisterUser path='/detail/:detailId' />
+                  <NotRegisterUser path='/favorite' />
+                  <NotRegisterUser path='/user' />
                 </Router>
+              )
         }
       </Context.Consumer>
       <NavBar />
