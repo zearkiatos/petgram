@@ -1,7 +1,6 @@
 import React from 'react'
 import { Query } from 'react-apollo'
 import { gql } from 'apollo-boost'
-import Skeleton from 'react-loading-skeleton'
 import { FavoritesList } from '../components/FavoritesList'
 import { GridLoadingSkeleton } from '../shared/components/GridLoadingSkeleton'
 
