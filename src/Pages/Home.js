@@ -3,7 +3,7 @@ import { CategoriesList } from '../components/CategoriesList'
 import { PhotoCardsList } from '../containers/PhotoCardsList'
 import { Layout } from '../components/Layout'
 
-export const Home = ({ categoryId }) => {
+const HomePage = ({ categoryId }) => {
   return (
     <Layout title='Photo apps for your pets' subtitle='With Petgram you can found domestic animals very beautiful'>
       <CategoriesList />
@@ -11,3 +11,7 @@ export const Home = ({ categoryId }) => {
     </Layout>
   )
 }
+
+export const Home = React.memo(HomePage, (prevProps, props) => {
+  return prevProps.categoryId === props.categoryId
+})
