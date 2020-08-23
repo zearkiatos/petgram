@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "test:e2e":"cypress open",
     "build": "webpack",
     "dev": "webpack-dev-server --history-api-fallback",
     "serve:dev": "webpack --mode 'development' && npx serve dist -s",
@@ -29,6 +30,7 @@
     "@babel/preset-react": "^7.10.1",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
+    "cypress": "^5.0.0",
     "dotenv-webpack": "^2.0.0",
     "nodemon-webpack-plugin": "^4.3.2",
     "standard": "^14.3.4",
