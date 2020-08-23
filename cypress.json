@@ -1,0 +1,7 @@
+{
+    "baseUrl": "https://frontend-petgram-app.zearkiatos.vercel.app/",
+    "chromeWebSecurity": false,
+    "viewportWidth": 500,
+    "viewportHeight": 800,
+    "integrationFolder": "test/e2e/integration"
+}
